@@ -133,27 +133,31 @@ public class Rover {
     }
 
     private void move() {
-        Point position = null;
+        Point position = getNewPosition();
 
-        switch(orientation) {
-            case NORTH:
-                position = new Point(this.position.x, this.position.y+1);
-                break;
-            case SOUTH:
-                position = new Point(this.position.x, this.position.y-1);
-                break;
-            case EAST:
-                position = new Point(this.position.x+1, this.position.y);
-                break;
-            case WEST:
-                position = new Point(this.position.x-1, this.position.y);
-                break;
-        }
-
-        if(plateau.isValid(position)) {
-            this.position = position;
-        } else {
+        if(!canMoveTo(position)) {
             throw new IllegalStateException("Can't move to the indicated position: " + position);
         }
+
+        this.position = position;
+    }
+
+    private Point getNewPosition() {
+        switch(orientation) {
+            case NORTH:
+                return new Point(this.position.x, this.position.y+1);
+            case SOUTH:
+                return new Point(this.position.x, this.position.y-1);
+            case EAST:
+                return new Point(this.position.x+1, this.position.y);
+            case WEST:
+                return new Point(this.position.x-1, this.position.y);
+        }
+
+        return null;
+    }
+
+    private boolean canMoveTo(Point point) {
+        return plateau.isValid(point);
     }
 }
