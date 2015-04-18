@@ -1,5 +1,7 @@
 package com.github.basoko.rovers;
 
+import com.github.basoko.rovers.command.Command;
+
 /**
  * The Mars rover.
  */
@@ -30,17 +32,7 @@ public class Rover {
      * @param command The {@link Command command} to be executed in the rover.
      */
     public void execute(Command command) {
-        switch (command) {
-            case SPIN_RIGHT:
-                spinRight();
-                break;
-            case SPIN_LEFT:
-                spinLeft();
-                break;
-            case MOVE:
-                move();
-                break;
-        }
+        command.execute();
     }
 
     /**

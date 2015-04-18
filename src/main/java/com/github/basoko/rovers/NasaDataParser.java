@@ -1,5 +1,7 @@
 package com.github.basoko.rovers;
 
+import com.github.basoko.rovers.command.Command;
+import com.github.basoko.rovers.command.CommandFactory;
 import com.github.basoko.rovers.exception.ParseException;
 
 import java.io.IOException;
@@ -96,7 +98,7 @@ public class NasaDataParser {
         Point roverPosition = getPoint(roverData);
         Orientation roverOrientation = getOrientation(roverData);
         Rover rover = new Rover(plateau, roverPosition, roverOrientation);
-        List<Command> commands = parseCommands(commandsData);
+        List<Command> commands = parseCommands(rover, commandsData);
 
         this.rovers.add(rover);
         this.commands.put(rover, commands);
@@ -108,10 +110,10 @@ public class NasaDataParser {
         return Orientation.fromInitial(data[2].charAt(0));
     }
 
-    private static ArrayList<Command> parseCommands(String line) {
+    private static ArrayList<Command> parseCommands(Rover rover, String line) {
         ArrayList<Command> commands = new ArrayList<>();
         for(char letter : line.toCharArray()) {
-            Command command = Command.fromLetter(letter);
+            Command command = CommandFactory.newInstance(rover, letter);
             commands.add(command);
         }
         return commands;

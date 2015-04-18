@@ -1,5 +1,7 @@
 package com.github.basoko.rovers;
 
+import com.github.basoko.rovers.command.Command;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
