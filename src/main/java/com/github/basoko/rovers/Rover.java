@@ -44,6 +44,59 @@ public class Rover {
     }
 
     /**
+     * Spin the rover 90 degrees to the right.
+     */
+    public void spinRight() {
+        switch (orientation) {
+            case NORTH:
+                orientation = Orientation.EAST;
+                break;
+            case SOUTH:
+                orientation = Orientation.WEST;
+                break;
+            case EAST:
+                orientation = Orientation.SOUTH;
+                break;
+            case WEST:
+                orientation = Orientation.NORTH;
+                break;
+        }
+    }
+
+    /**
+     * Spin the rover 90 degrees to the left.
+     */
+    public void spinLeft() {
+        switch (orientation) {
+            case NORTH:
+                orientation = Orientation.WEST;
+                break;
+            case SOUTH:
+                orientation = Orientation.EAST;
+                break;
+            case EAST:
+                orientation = Orientation.NORTH;
+                break;
+            case WEST:
+                orientation = Orientation.SOUTH;
+                break;
+        }
+    }
+
+    /**
+     * Move the rover to a new position depending on its current orientation.
+     */
+    public void move() {
+        Point position = getNewPosition();
+
+        if(!canMoveTo(position)) {
+            throw new IllegalStateException("Can't move to the indicated position: " + position);
+        }
+
+        this.position = position;
+    }
+
+    /**
      * Get a {@link String string} representation of the rover position and orientation. The string format is build
      * firstly by the cartesian points and then by the representation of the cardinal point separated by a space.
      * <p>
@@ -96,50 +149,6 @@ public class Rover {
         }
 
         return false;
-    }
-
-    private void spinRight() {
-        switch (orientation) {
-            case NORTH:
-                orientation = Orientation.EAST;
-                break;
-            case SOUTH:
-                orientation = Orientation.WEST;
-                break;
-            case EAST:
-                orientation = Orientation.SOUTH;
-                break;
-            case WEST:
-                orientation = Orientation.NORTH;
-                break;
-        }
-    }
-
-    private void spinLeft() {
-        switch (orientation) {
-            case NORTH:
-                orientation = Orientation.WEST;
-                break;
-            case SOUTH:
-                orientation = Orientation.EAST;
-                break;
-            case EAST:
-                orientation = Orientation.NORTH;
-                break;
-            case WEST:
-                orientation = Orientation.SOUTH;
-                break;
-        }
-    }
-
-    private void move() {
-        Point position = getNewPosition();
-
-        if(!canMoveTo(position)) {
-            throw new IllegalStateException("Can't move to the indicated position: " + position);
-        }
-
-        this.position = position;
     }
 
     private Point getNewPosition() {
