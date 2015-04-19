@@ -1,5 +1,8 @@
 package com.github.basoko.rovers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The Mars plateau.
  */
@@ -8,6 +11,8 @@ public class Plateau {
     private final Point bottomLeft;
 
     private final Point upperRight;
+
+    private List<Rover> rovers;
 
     /**
      * Constructs a plateau using {@link Point point} as its upper-right limit.
@@ -21,6 +26,7 @@ public class Plateau {
 
         this.bottomLeft = new Point(0, 0);
         this.upperRight = point;
+        this.rovers = new ArrayList<Rover>();
     }
 
     /**
@@ -31,6 +37,28 @@ public class Plateau {
     public boolean isValid(Point point) {
         return point.x >= bottomLeft.x && point.x <= upperRight.x
                 && point.y >= bottomLeft.y && point.y <= upperRight.y;
+    }
+
+    /**
+     * Add a rover to the plateau.
+     * @param rover Rover to be added to the plateau.
+     */
+    public void addRover(Rover rover) {
+        this.rovers.add(rover);
+    }
+
+    /**
+     * Check if there is a rover in the given point
+     * @param point The point to check if it's occupied by other rover.
+     * @return true if it is ocuppied otherwise false.
+     */
+    public boolean isOcupied(Point point) {
+        for(Rover rover : this.rovers) {
+            if(rover.getPosition().equals(point)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

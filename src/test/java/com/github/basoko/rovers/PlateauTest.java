@@ -52,6 +52,31 @@ public class PlateauTest {
     }
 
     /**
+     * Test that a point given is occupied by a rover.
+     */
+    @Test
+    public void testIsOccupied() {
+        Plateau plateau = new Plateau(new Point(5, 5));
+
+        Rover rover = new Rover(plateau, new Point(1, 3), Orientation.NORTH);
+        plateau.addRover(rover);
+        assertTrue(plateau.isOcupied(new Point(1, 3)));
+    }
+
+    /**
+     * Test that a point given is not occupied by a rover.
+     */
+    @Test
+    public void testIsNotOccupied() {
+        Plateau plateau = new Plateau(new Point(5, 5));
+
+        Rover rover = new Rover(plateau, new Point(1, 3), Orientation.NORTH);
+        plateau.addRover(rover);
+        assertFalse(plateau.isOcupied(new Point(1, 4)));
+    }
+
+
+    /**
      * Test the equality of two points.
      */
     @Test

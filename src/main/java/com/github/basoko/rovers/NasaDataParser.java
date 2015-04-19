@@ -102,6 +102,8 @@ public class NasaDataParser {
 
         this.rovers.add(rover);
         this.commands.put(rover, commands);
+
+        plateau.addRover(rover);
     }
 
     private Orientation getOrientation(String line) {
