@@ -94,7 +94,7 @@ public class Rover {
     public boolean canMove() {
         Point position = getNewPosition();
 
-        return !plateau.isOcupied(position);
+        return !plateau.isOccupied(position);
     }
 
     /**

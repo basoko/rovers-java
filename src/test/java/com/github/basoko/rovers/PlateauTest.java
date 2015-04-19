@@ -60,7 +60,7 @@ public class PlateauTest {
 
         Rover rover = new Rover(plateau, new Point(1, 3), Orientation.NORTH);
         plateau.addRover(rover);
-        assertTrue(plateau.isOcupied(new Point(1, 3)));
+        assertTrue(plateau.isOccupied(new Point(1, 3)));
     }
 
     /**
@@ -72,7 +72,7 @@ public class PlateauTest {
 
         Rover rover = new Rover(plateau, new Point(1, 3), Orientation.NORTH);
         plateau.addRover(rover);
-        assertFalse(plateau.isOcupied(new Point(1, 4)));
+        assertFalse(plateau.isOccupied(new Point(1, 4)));
     }
 
 

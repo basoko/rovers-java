@@ -52,7 +52,7 @@ public class Plateau {
      * @param point The {@link Point point} to check if it's occupied by other rover.
      * @return true if it is occupied by a rover otherwise false.
      */
-    public boolean isOcupied(Point point) {
+    public boolean isOccupied(Point point) {
         for(Rover rover : this.rovers) {
             if(rover.getPosition().equals(point)) {
                 return true;
