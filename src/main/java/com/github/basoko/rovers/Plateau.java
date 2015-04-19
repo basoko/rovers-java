@@ -26,7 +26,7 @@ public class Plateau {
 
         this.bottomLeft = new Point(0, 0);
         this.upperRight = point;
-        this.rovers = new ArrayList<Rover>();
+        this.rovers = new ArrayList<>();
     }
 
     /**
@@ -40,8 +40,8 @@ public class Plateau {
     }
 
     /**
-     * Add a rover to the plateau.
-     * @param rover Rover to be added to the plateau.
+     * Add a {@link Rover rover} to the plateau.
+     * @param rover The {@link Rover rover} to be added to the plateau.
      */
     public void addRover(Rover rover) {
         this.rovers.add(rover);
@@ -49,8 +49,8 @@ public class Plateau {
 
     /**
      * Check if there is a rover in the given point
-     * @param point The point to check if it's occupied by other rover.
-     * @return true if it is ocuppied otherwise false.
+     * @param point The {@link Point point} to check if it's occupied by other rover.
+     * @return true if it is occupied by a rover otherwise false.
      */
     public boolean isOcupied(Point point) {
         for(Rover rover : this.rovers) {

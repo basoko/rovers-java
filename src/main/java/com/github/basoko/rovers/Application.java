@@ -1,12 +1,10 @@
 package com.github.basoko.rovers;
 
-import com.github.basoko.rovers.command.Command;
 import com.github.basoko.rovers.parallel.ParallelMission;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 /**
  * Application that represents the Nasa Mars rovers mission.

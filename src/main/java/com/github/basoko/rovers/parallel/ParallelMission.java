@@ -10,15 +10,25 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+/**
+ * The parallel mission executor.
+ */
 public class ParallelMission {
     private ExecutorService executor;
 
     NasaDataParser parser;
 
+    /**
+     * Constructs a parallel mission.
+     * @param parser The {@link NasaDataParser parser} with the mission data.
+     */
     public ParallelMission(NasaDataParser parser) {
         this.parser = parser;
     }
 
+    /**
+     * Starts the mission.
+     */
     public void start() {
         List<RoverThread> rovers = new ArrayList<>();
 
