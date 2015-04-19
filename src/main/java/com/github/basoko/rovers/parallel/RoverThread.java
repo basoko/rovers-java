@@ -30,7 +30,7 @@ public class RoverThread implements Callable<Rover> {
                 this.rover.execute(this.commands.get(current));
                 this.current++;
             } else {
-                handler.onBlock(this);
+                handler.onBlock();
             }
 
         }
