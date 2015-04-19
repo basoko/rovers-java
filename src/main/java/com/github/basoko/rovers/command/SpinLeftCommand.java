@@ -19,4 +19,9 @@ public class SpinLeftCommand extends RoverCommand {
     public void execute() {
         this.rover.spinLeft();
     }
+
+    @Override
+    public boolean canExecute() {
+        return true;
+    }
 }

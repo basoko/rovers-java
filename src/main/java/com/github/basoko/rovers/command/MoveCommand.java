@@ -19,4 +19,9 @@ public class MoveCommand extends RoverCommand {
     public void execute() {
         this.rover.move();
     }
+
+    @Override
+    public boolean canExecute() {
+        return rover.canMove();
+    }
 }
