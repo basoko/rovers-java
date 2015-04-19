@@ -29,8 +29,8 @@ public class Application {
             NasaDataParser parser = new NasaDataParser(filePath);
             List<Rover> rovers = parser.getRovers();
 
-            for (final Rover rover : rovers) {
-                final List<Command> commands = parser.getCommands(rover);
+            for (Rover rover : rovers) {
+                List<Command> commands = parser.getCommands(rover);
                 executeRoverCommands(rover, commands);
                 System.out.println(rover.showPosition());
             }
