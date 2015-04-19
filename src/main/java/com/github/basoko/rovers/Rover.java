@@ -81,10 +81,6 @@ public class Rover {
     public void move() {
         Point position = getNewPosition();
 
-        if(!canMoveTo(position)) {
-            throw new IllegalStateException("Can't move to the indicated position: " + position);
-        }
-
         this.position = position;
     }
 
@@ -93,6 +89,10 @@ public class Rover {
      */
     public boolean canMove() {
         Point position = getNewPosition();
+
+        if(!plateau.isValid(position)) {
+            throw new IllegalStateException("Can't move to the indicated position: " + position);
+        }
 
         return !plateau.isOccupied(position);
     }
@@ -165,9 +165,5 @@ public class Rover {
         }
 
         return null;
-    }
-
-    private boolean canMoveTo(Point point) {
-        return plateau.isValid(point);
     }
 }

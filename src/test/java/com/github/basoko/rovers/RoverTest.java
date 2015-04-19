@@ -102,7 +102,7 @@ public class RoverTest {
     }
 
     /**
-     * Test a rover can not move method.
+     * Test a rover can not move to a occupied position.
      */
     @Test
     public void testCanNotMove() {
@@ -115,12 +115,12 @@ public class RoverTest {
     }
 
     /**
-     * Test move method of rover outside of plateau should throws an {@link IllegalArgumentException illegal argument exception}.
+     * Test a rover can not move to a position outside of plateau should throws an {@link IllegalArgumentException illegal argument exception}.
      */
     @Test(expected = IllegalStateException.class)
     public void testMoveOutsidePlateau() {
         Rover rover = new Rover(plateau, new Point(5, 5), Orientation.NORTH);
-        rover.move();
+        rover.canMove();
     }
 
     /**
