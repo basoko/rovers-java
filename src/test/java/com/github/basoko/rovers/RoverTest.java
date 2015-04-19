@@ -89,6 +89,15 @@ public class RoverTest {
     }
 
     /**
+     * Test move method of rover outside of plateau should throws an {@link IllegalArgumentException illegal argument exception}.
+     */
+    @Test(expected = IllegalStateException.class)
+    public void testMoveOutsidePlateau() {
+        Rover rover = new Rover(plateau, new Point(5, 5), Orientation.NORTH);
+        rover.move();
+    }
+
+    /**
      * Test that a rover renders correctly its position.
      */
     @Test
