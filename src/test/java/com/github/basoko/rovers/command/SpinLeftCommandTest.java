@@ -1,31 +1,22 @@
 package com.github.basoko.rovers.command;
 
-import com.github.basoko.rovers.Orientation;
-import com.github.basoko.rovers.Plateau;
-import com.github.basoko.rovers.Point;
 import com.github.basoko.rovers.Rover;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
+import static org.mockito.Mockito.verify;
 
 /**
  * Test suite of {@link SpinLeftCommand}.
  */
+@RunWith(MockitoJUnitRunner.class)
+
 public class SpinLeftCommandTest {
+
+    @Mock
     private Rover rover;
-
-    @Before
-    public void before() {
-        Plateau plateau = new Plateau(new Point(5, 5));
-        rover = new Rover(plateau, new Point(1, 3), Orientation.NORTH);
-    }
-
-    @After
-    public void after() {
-        this.rover  = null;
-    }
 
     /**
      * Test the rover spins left executing the command.
@@ -34,9 +25,8 @@ public class SpinLeftCommandTest {
     public void testSpinLeft() {
         SpinLeftCommand command = new SpinLeftCommand(rover);
 
-        rover.execute(command);
+        command.execute();
 
-        assertEquals(new Point(1, 3), rover.getPosition());
-        assertEquals(Orientation.WEST, rover.getOrientation());
+        verify(rover).spinLeft();
     }
 }
