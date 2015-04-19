@@ -89,6 +89,32 @@ public class RoverTest {
     }
 
     /**
+     * Test a rover can not move method.
+     */
+    @Test
+    public void testCanMove() {
+        Rover rover1 = new Rover(plateau, new Point(1, 3), Orientation.NORTH);
+        plateau.addRover(rover1);
+
+        Rover rover2 = new Rover(plateau, new Point(1, 5), Orientation.SOUTH);
+        plateau.addRover(rover2);
+        assertTrue(rover2.canMove());
+    }
+
+    /**
+     * Test a rover can not move method.
+     */
+    @Test
+    public void testCanNotMove() {
+        Rover rover1 = new Rover(plateau, new Point(1, 3), Orientation.NORTH);
+        plateau.addRover(rover1);
+
+        Rover rover2 = new Rover(plateau, new Point(1, 4), Orientation.SOUTH);
+        plateau.addRover(rover2);
+        assertFalse(rover2.canMove());
+    }
+
+    /**
      * Test move method of rover outside of plateau should throws an {@link IllegalArgumentException illegal argument exception}.
      */
     @Test(expected = IllegalStateException.class)

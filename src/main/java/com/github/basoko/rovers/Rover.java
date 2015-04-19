@@ -89,6 +89,15 @@ public class Rover {
     }
 
     /**
+     * Move the rover to a new position depending on its current orientation.
+     */
+    public boolean canMove() {
+        Point position = getNewPosition();
+
+        return !plateau.isOcupied(position);
+    }
+
+    /**
      * Get a {@link String string} representation of the rover position and orientation. The string format is build
      * firstly by the cartesian points and then by the representation of the cardinal point separated by a space.
      * <p>
