@@ -1,6 +1,6 @@
 # Mars Rover problem
 
-# Instructions
+## Instructions
 
 A squad of robotic rovers are to be landed by NASA on a plateau on
 Mars. This plateau, which is curiously rectangular, must be navigated
@@ -18,7 +18,7 @@ spot. ‘M’ means move forward one grid point, and maintain the same
 heading.
 Assume that the square directly North from (x, y) is (x, y+1).
 
-## INPUT
+### INPUT
 
 The first line of input is the upper-right coordinates of the plateau, the
 lower- left coordinates are assumed to be 0,0.
@@ -33,12 +33,12 @@ Each rover will be finished sequentially, which means that the
 second rover won’t start to move until the first one has finished
 moving.
 
-## OUTPUT
+### OUTPUT
 
 The output for each rover should be its final co-ordinates and
 heading.
 
-### INPUT AND OUTPUT
+#### INPUT AND OUTPUT
 
 Test Input:
 
@@ -52,8 +52,25 @@ LMLMLMLMM
 
 MMRMMRMRRM
 
-### Expected Output:
+#### Expected Output:
 
 1 3 N
 
 5 1 E
+
+## How to run it
+### Requirements
+   * Maven 3.
+   * Java 1.7.
+
+### Build
+```
+chmod +x build.sh
+./build.sh
+```
+
+### Run
+```
+chmod +x run.sh
+./run.sh files/input.txt
+```
