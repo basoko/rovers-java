@@ -66,6 +66,9 @@ public class RoverTest {
         assertEquals(rover.getOrientation(), Orientation.NORTH);
     }
 
+    /**
+     * Test move method of rover.
+     */
     @Test
     public void testMove() {
         Rover rover = new Rover(plateau, new Point(1, 3), Orientation.NORTH);
