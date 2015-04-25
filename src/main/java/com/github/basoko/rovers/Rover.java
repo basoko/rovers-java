@@ -124,6 +124,17 @@ public class Rover {
         return this.orientation;
     }
 
+    @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 31 * result + plateau.hashCode();
+        result = 31 * result + position.hashCode();
+        result = 31 * result + orientation.hashCode();
+
+        return result;
+    }
+
     /**
      * Returns true if the specified object is equal to the rover.
      * Two rovers are equal if they are in the same points of the

@@ -8,6 +8,15 @@ import com.github.basoko.rovers.Rover;
 public abstract class RoverCommand implements Command {
     protected Rover rover;
 
+    @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 31 * result + rover.hashCode();
+
+        return result;
+    }
+
     /**
      * Returns true if the specified object is equal to rover {@link Command command}.
      * Two commands are equal if are executed on the same

@@ -155,4 +155,15 @@ public class RoverTest {
         Rover rover2 =  new Rover(plateau, point, Orientation.SOUTH);
         assertFalse(rover1.equals(rover2));
     }
+
+    /**
+     * Test the hashCode of two equals rovers is the same.
+     */
+    @Test
+    public void isHashCodeEquals() {
+        Rover rover1 = new Rover(plateau, point, Orientation.NORTH);
+        Rover rover2 =  new Rover(plateau, point, Orientation.NORTH);
+
+        assertEquals(rover1.hashCode(), rover2.hashCode());
+    }
 }

@@ -33,6 +33,16 @@ public class Plateau {
                 && point.y >= bottomLeft.y && point.y <= upperRight.y;
     }
 
+    @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 31 * result + bottomLeft.hashCode();
+        result = 31 * result + upperRight.hashCode();
+
+        return result;
+    }
+
     /**
      * Returns true if the specified object is equal to the plateau.
      * Two plateaus are equal if they have the same coordinates.

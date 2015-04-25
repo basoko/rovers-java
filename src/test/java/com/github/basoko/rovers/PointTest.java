@@ -2,6 +2,7 @@ package com.github.basoko.rovers;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -38,5 +39,16 @@ public class PointTest {
         Point point1 = new Point(3, 3);
         Point point3 = new Point(1, 2);
         assertFalse(point1.equals(point3));
+    }
+
+    /**
+     * Test the hashCode of two equals points is the same.
+     */
+    @Test
+    public void isHashCodeEquals() {
+        Point point1 = new Point(3, 3);
+        Point point2 = new Point(3, 3);
+
+        assertEquals(point1.hashCode(), point2.hashCode());
     }
 }

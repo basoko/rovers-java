@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -61,5 +62,16 @@ public class RoverCommandTest {
         SpinLeftCommand command1 = new SpinLeftCommand(this.rover);
         SpinLeftCommand command2 = new SpinLeftCommand(rover2);
         assertFalse(command1.equals(command2));
+    }
+
+    /**
+     * Test the hashCode of two equals rover commands is the same.
+     */
+    @Test
+    public void isHashCodeEquals() {
+        SpinLeftCommand command1 = new SpinLeftCommand(this.rover);
+        SpinLeftCommand command2 = new SpinLeftCommand(this.rover);
+
+        assertEquals(command1.hashCode(), command2.hashCode());
     }
 }

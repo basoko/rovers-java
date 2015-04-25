@@ -2,6 +2,7 @@ package com.github.basoko.rovers;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -81,5 +82,16 @@ public class PlateauTest {
         Plateau plateau2 = new Plateau(new Point(3, 5));
 
         assertFalse(plateau1.equals(plateau2));
+    }
+
+    /**
+     * Test the hashCode of two equals plateaus is the same.
+     */
+    @Test
+    public void isHashCodeEquals() {
+        Plateau plateau1 = new Plateau(new Point(5, 5));
+        Plateau plateau2 = new Plateau(new Point(5, 5));
+
+        assertEquals(plateau1.hashCode(), plateau2.hashCode());
     }
 }
