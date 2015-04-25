@@ -8,12 +8,12 @@ public class Point {
     /**
      * The x axis.
      */
-    public int x;
+    public final int x;
 
     /**
      * The y axis.
      */
-    public int y;
+    public final int y;
 
     /**
      * Creates a new point.

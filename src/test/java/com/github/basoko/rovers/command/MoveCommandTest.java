@@ -22,9 +22,9 @@ public class MoveCommandTest {
      */
     @Test
     public void testMove() {
-        MoveCommand command = new MoveCommand(rover);
+        MoveCommand command = new MoveCommand();
 
-        command.execute();
+        command.execute(rover);
 
         verify(rover).move();
     }

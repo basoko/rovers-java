@@ -23,9 +23,9 @@ public class SpinLeftCommandTest {
      */
     @Test
     public void testSpinLeft() {
-        SpinLeftCommand command = new SpinLeftCommand(rover);
+        SpinLeftCommand command = new SpinLeftCommand();
 
-        command.execute();
+        command.execute(rover);
 
         verify(rover).spinLeft();
     }

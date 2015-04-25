@@ -33,16 +33,16 @@ public class RoverTest {
     public void testSpinRight() {
         Rover rover = new Rover(plateau, point, Orientation.NORTH);
 
-        rover.spinRight();
+        rover = rover.spinRight();
         assertEquals(rover.getOrientation(), Orientation.EAST);
 
-        rover.spinRight();
+        rover = rover.spinRight();
         assertEquals(rover.getOrientation(), Orientation.SOUTH);
 
-        rover.spinRight();
+        rover = rover.spinRight();
         assertEquals(rover.getOrientation(), Orientation.WEST);
 
-        rover.spinRight();
+        rover = rover.spinRight();
         assertEquals(rover.getOrientation(), Orientation.NORTH);
     }
 
@@ -53,16 +53,16 @@ public class RoverTest {
     public void testSpinLeft() {
         Rover rover = new Rover(plateau, point, Orientation.NORTH);
 
-        rover.spinLeft();
+        rover = rover.spinLeft();
         assertEquals(rover.getOrientation(), Orientation.WEST);
 
-        rover.spinLeft();
+        rover = rover.spinLeft();
         assertEquals(rover.getOrientation(), Orientation.SOUTH);
 
-        rover.spinLeft();
+        rover = rover.spinLeft();
         assertEquals(rover.getOrientation(), Orientation.EAST);
 
-        rover.spinLeft();
+        rover = rover.spinLeft();
         assertEquals(rover.getOrientation(), Orientation.NORTH);
     }
 
@@ -72,19 +72,19 @@ public class RoverTest {
     @Test
     public void testMove() {
         Rover rover = new Rover(plateau, new Point(1, 3), Orientation.NORTH);
-        rover.move();
+        rover = rover.move();
         assertEquals(new Point(1, 4), rover.getPosition());
 
         rover = new Rover(plateau, new Point(1, 3), Orientation.SOUTH);
-        rover.move();
+        rover = rover.move();
         assertEquals(new Point(1, 2), rover.getPosition());
 
         rover = new Rover(plateau, new Point(1, 3), Orientation.EAST);
-        rover.move();
+        rover = rover.move();
         assertEquals(new Point(2, 3), rover.getPosition());
 
         rover = new Rover(plateau, new Point(1, 3), Orientation.WEST);
-        rover.move();
+        rover = rover.move();
         assertEquals(new Point(0, 3), rover.getPosition());
     }
 

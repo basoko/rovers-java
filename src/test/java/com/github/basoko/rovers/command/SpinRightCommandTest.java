@@ -22,9 +22,9 @@ public class SpinRightCommandTest {
      */
     @Test
     public void testSpinRight() {
-        SpinRightCommand command = new SpinRightCommand(rover);
+        SpinRightCommand command = new SpinRightCommand();
 
-        command.execute();
+        command.execute(rover);
 
         verify(rover).spinRight();
     }

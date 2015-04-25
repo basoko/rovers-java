@@ -98,7 +98,7 @@ public class NasaDataParser {
         Point roverPosition = getPoint(roverData);
         Orientation roverOrientation = getOrientation(roverData);
         Rover rover = new Rover(plateau, roverPosition, roverOrientation);
-        List<Command> commands = parseCommands(rover, commandsData);
+        List<Command> commands = parseCommands(commandsData);
 
         this.rovers.add(rover);
         this.commands.put(rover, commands);
@@ -110,10 +110,10 @@ public class NasaDataParser {
         return Orientation.fromInitial(data[2].charAt(0));
     }
 
-    private static ArrayList<Command> parseCommands(Rover rover, String line) {
+    private static ArrayList<Command> parseCommands(String line) {
         ArrayList<Command> commands = new ArrayList<>();
         for(char letter : line.toCharArray()) {
-            Command command = CommandFactory.newInstance(rover, letter);
+            Command command = CommandFactory.newInstance(letter);
             commands.add(command);
         }
         return commands;

@@ -7,11 +7,11 @@ import com.github.basoko.rovers.command.Command;
  */
 public class Rover {
 
-    private Plateau plateau;
+    private final Plateau plateau;
 
-    private Point position;
+    private final Point position;
 
-    private Orientation orientation;
+    private final Orientation orientation;
 
     /**
      * Constructs a rover with a {@link Point position} in the {@link Plateau plateau}
@@ -31,61 +31,57 @@ public class Rover {
      * and its {@link Orientation orientation}.
      * @param command The {@link Command command} to be executed in the rover.
      */
-    public void execute(Command command) {
-        command.execute();
+    public Rover execute(Command command) {
+        return command.execute(this);
     }
 
     /**
      * Spin the rover 90 degrees to the right.
      */
-    public void spinRight() {
+    public Rover spinRight() {
         switch (orientation) {
             case NORTH:
-                orientation = Orientation.EAST;
-                break;
+                return new Rover(plateau, position, Orientation.EAST);
             case SOUTH:
-                orientation = Orientation.WEST;
-                break;
+                return new Rover(plateau, position, Orientation.WEST);
             case EAST:
-                orientation = Orientation.SOUTH;
-                break;
+                return new Rover(plateau, position, Orientation.SOUTH);
             case WEST:
-                orientation = Orientation.NORTH;
-                break;
+                return new Rover(plateau, position, Orientation.NORTH);
         }
+
+        return null;
     }
 
     /**
      * Spin the rover 90 degrees to the left.
      */
-    public void spinLeft() {
+    public Rover spinLeft() {
         switch (orientation) {
             case NORTH:
-                orientation = Orientation.WEST;
-                break;
+                return new Rover(plateau, position, Orientation.WEST);
             case SOUTH:
-                orientation = Orientation.EAST;
-                break;
+                return new Rover(plateau, position, Orientation.EAST);
             case EAST:
-                orientation = Orientation.NORTH;
-                break;
+                return new Rover(plateau, position, Orientation.NORTH);
             case WEST:
-                orientation = Orientation.SOUTH;
-                break;
+                return new Rover(plateau, position, Orientation.SOUTH);
         }
+
+        return null;
     }
 
     /**
      * Move the rover to a new position depending on its current orientation.
      */
-    public void move() {
+    public Rover move() {
         Point position = getNewPosition();
 
         if(!canMoveTo(position)) {
             throw new IllegalStateException("Can't move to the indicated position: " + position);
         }
 
-        this.position = position;
+        return new Rover(plateau, position, orientation);
     }
 
     /**

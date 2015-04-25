@@ -31,7 +31,7 @@ public class Application {
 
             for (Rover rover : rovers) {
                 List<Command> commands = parser.getCommands(rover);
-                executeRoverCommands(rover, commands);
+                rover = executeRoverCommands(rover, commands);
                 System.out.println(rover.showPosition());
             }
         } catch(Exception e) {
@@ -54,9 +54,10 @@ public class Application {
         }
     }
 
-    private static void executeRoverCommands(Rover rover, List<Command> commands) {
+    private static Rover executeRoverCommands(Rover rover, List<Command> commands) {
         for(Command command : commands) {
-            rover.execute(command);
+            rover = rover.execute(command);
         }
+        return rover;
     }
 }

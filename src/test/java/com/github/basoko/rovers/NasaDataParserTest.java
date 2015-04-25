@@ -45,18 +45,18 @@ public class NasaDataParserTest {
         assertEquals(new Rover(plateau, new Point(3, 3), Orientation.EAST), rover2);
 
         List<Command> commands1 = Arrays.asList(new Command[] {
-                left(rover1), move(rover1), left(rover1), move(rover1),
-                left(rover1), move(rover1), left(rover1), move(rover1),
-                move(rover1)
+                left(), move(), left(), move(),
+                left(), move(), left(), move(),
+                move()
         });
-        assertEquals(commands1, parser.getCommands(rover1));
+        assertTwoListOfCommands(commands1, parser.getCommands(rover1));
 
         List<Command> commands2 = Arrays.asList(new Command[] {
-                move(rover2), move(rover2), right(rover2), move(rover2),
-                move(rover2), right(rover2), move(rover2), right(rover2),
-                right(rover2), move(rover2)
+                move(), move(), right(), move(),
+                move(), right(), move(), right(),
+                right(), move()
         });
-        assertEquals(commands2, parser.getCommands(rover2));
+        assertTwoListOfCommands(commands2, parser.getCommands(rover2));
     }
 
     /**
@@ -68,15 +68,32 @@ public class NasaDataParserTest {
         NasaDataParser parser = new NasaDataParser(Paths.get("files/tests/invalid_data.txt"));
     }
 
-    private SpinRightCommand right(Rover rover) {
-        return new SpinRightCommand(rover);
+    private SpinRightCommand right() {
+        return new SpinRightCommand();
     }
 
-    private SpinLeftCommand left(Rover rover) {
-        return new SpinLeftCommand(rover);
+    private SpinLeftCommand left() {
+        return new SpinLeftCommand();
     }
 
-    private MoveCommand move(Rover rover) {
-        return new MoveCommand(rover);
+    private MoveCommand move() {
+        return new MoveCommand();
+    }
+
+    private void assertTwoListOfCommands(List<Command> commands1, List<Command> commands2) {
+        Plateau plateau = new Plateau(new Point(5, 5));
+        Rover rover1 = new Rover(plateau, new Point(1, 2), Orientation.NORTH);
+        Rover rover2 = rover1;
+        rover1 = executeListOfCommands(rover1, commands1);
+        rover2 = executeListOfCommands(rover2, commands2);
+
+        assertEquals(rover1, rover2);
+    }
+
+    private Rover executeListOfCommands(Rover rover, List<Command> commands) {
+        for(Command command : commands) {
+            rover = rover.execute(command);
+        }
+        return rover;
     }
 }

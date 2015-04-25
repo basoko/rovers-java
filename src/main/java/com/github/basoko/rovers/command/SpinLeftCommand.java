@@ -5,18 +5,10 @@ import com.github.basoko.rovers.Rover;
 /**
  * Spin left {@link Command command} of {@link Rover rover}.
  */
-public class SpinLeftCommand extends RoverCommand {
-
-    /**
-     * Constructs a spin left {@link Command command}.
-     * @param rover The {@link Rover rover} instance.
-     */
-    public SpinLeftCommand(Rover rover) {
-        this.rover = rover;
-    }
+public class SpinLeftCommand implements Command {
 
     @Override
-    public void execute() {
-        this.rover.spinLeft();
+    public Rover execute(Rover rover) {
+        return rover.spinLeft();
     }
 }
