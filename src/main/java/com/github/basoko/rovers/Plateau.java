@@ -41,12 +41,15 @@ public class Plateau {
      */
     @Override
     public boolean equals(Object o) {
-        if(o instanceof Plateau) {
-            Plateau other = (Plateau) o;
-            return this.bottomLeft.equals(other.bottomLeft) &&
-                    this.upperRight.equals(other.upperRight);
-        }
+        if(o == this) return true;
 
-        return false;
+        if(o == null) return false;
+
+        if(!(o instanceof Plateau)) return false;
+
+        Plateau other = (Plateau) o;
+        return this.bottomLeft.equals(other.bottomLeft) &&
+                this.upperRight.equals(other.upperRight);
+
     }
 }

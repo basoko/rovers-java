@@ -22,6 +22,15 @@ public class PointTest {
     }
 
     /**
+     * Test the inequality with null.
+     */
+    @Test
+    public void isNotEqualWithNull() {
+        Point point1 = new Point(3, 3);
+        assertFalse(point1.equals(null));
+    }
+
+    /**
      * Test the inequality of two points.
      */
     @Test

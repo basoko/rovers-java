@@ -63,6 +63,16 @@ public class PlateauTest {
     }
 
     /**
+     * Test the inequality with null.
+     */
+    @Test
+    public void isNotEqualWithNull() {
+        Plateau plateau1 = new Plateau(new Point(5, 5));
+
+        assertFalse(plateau1.equals(null));
+    }
+
+    /**
      * Test the inequality of two points.
      */
     @Test

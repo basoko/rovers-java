@@ -118,6 +118,15 @@ public class RoverTest {
     }
 
     /**
+     * Test the inequality with null.
+     */
+    @Test
+    public void isNotEqualWithNull() {
+        Rover rover1 = new Rover(plateau, point, Orientation.NORTH);
+        assertFalse(rover1.equals(null));
+    }
+
+    /**
      * Test the inequality of two rovers with different plateaus.
      */
     @Test

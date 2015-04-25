@@ -42,6 +42,15 @@ public class RoverCommandTest {
     }
 
     /**
+     * Test the inequality with null.
+     */
+    @Test
+    public void isNotEqualWithNull() {
+        SpinLeftCommand command1 = new SpinLeftCommand(this.rover);
+        assertFalse(command1.equals(null));
+    }
+
+    /**
      * Test the inequality of two whatever rover commands.
      */
     @Test

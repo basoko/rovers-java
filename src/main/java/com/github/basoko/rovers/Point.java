@@ -34,12 +34,14 @@ public class Point {
      */
     @Override
     public boolean equals(Object o) {
-        if(o instanceof Point) {
-            Point other = (Point) o;
-            return other.x == this.x && other.y == this.y;
-        }
+        if(o == this) return true;
 
-        return false;
+        if(o == null) return false;
+
+        if(!(o instanceof Point)) return false;
+
+        Point other = (Point) o;
+        return other.x == this.x && other.y == this.y;
     }
 
     /**

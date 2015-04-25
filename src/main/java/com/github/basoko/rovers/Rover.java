@@ -133,14 +133,16 @@ public class Rover {
      */
     @Override
     public boolean equals(Object o) {
-        if(o instanceof Rover) {
-            Rover other = (Rover) o;
-            return this.plateau.equals(other.plateau) &&
-                    this.position.equals(other.position) &&
-                    this.orientation.equals(other.orientation);
-        }
+        if(o == this) return true;
 
-        return false;
+        if(o == null) return false;
+
+        if(! (o instanceof Rover)) return false;
+
+        Rover other = (Rover) o;
+        return this.plateau.equals(other.plateau) &&
+                this.position.equals(other.position) &&
+                this.orientation.equals(other.orientation);
     }
 
     private Point getNewPosition() {

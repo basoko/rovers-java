@@ -18,11 +18,13 @@ public abstract class RoverCommand implements Command {
      */
     @Override
     public boolean equals(Object o) {
-        if(o instanceof RoverCommand) {
-            RoverCommand other = (RoverCommand) o;
-            return this.rover.equals(other.rover);
-        }
+        if(o == this) return true;
 
-        return false;
+        if(o == null) return false;
+
+        if(!(o instanceof RoverCommand)) return false;
+
+        RoverCommand other = (RoverCommand) o;
+        return this.rover.equals(other.rover);
     }
 }
