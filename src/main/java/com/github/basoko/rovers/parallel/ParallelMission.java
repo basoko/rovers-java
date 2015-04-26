@@ -39,22 +39,13 @@ public class ParallelMission {
         Plateau plateau = parser.getPlateau();
 
         Map<Point, Lock> locks = getLockPointsMap(plateau.getAllPoints());
-
-        List<RoverThread> threads = new ArrayList<>();
-        for(Rover rover : parser.getRovers()) {
-            RoverNode node = new RoverNode(rover,  parser.getCommands(rover));
-            threads.add(new RoverThread(node, threads, locks));
-        }
+        List<RoverThread> threads = createRoverThreads(locks);
 
         try {
             executor = Executors.newFixedThreadPool(threads.size());
             List<Future<Rover>> futures = executor.invokeAll(threads);
 
-            for (Future<Rover> future : futures) {
-                Rover rover = future.get();
-
-                System.out.println(rover.showPosition());
-            }
+            printRoversPositions(futures);
 
         } catch(Exception e) {
             if(e.getCause() instanceof BlockedException) {
@@ -79,4 +70,21 @@ public class ParallelMission {
         return locks;
     }
 
+    private List<RoverThread> createRoverThreads(Map<Point, Lock> locks) {
+        List<RoverThread> threads = new ArrayList<>();
+        for(Rover rover : parser.getRovers()) {
+            RoverNode node = new RoverNode(rover,  parser.getCommands(rover));
+            threads.add(new RoverThread(node, threads, locks));
+        }
+
+        return threads;
+    }
+
+    private void printRoversPositions(List<Future<Rover>> futures) throws Exception {
+        for (Future<Rover> future : futures) {
+            Rover rover = future.get();
+
+            System.out.println(rover.showPosition());
+        }
+    }
 }
