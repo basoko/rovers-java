@@ -12,7 +12,7 @@ public class CommandFactory {
      * Constructs a new command instance to be executed by the rover.
      * @param rover The rover instance of the command.
      * @param letter The letter character that represents the command of the rover.
-     * @return
+     * @return the command instance.
      */
     public static final Command newInstance(Rover rover, char letter) {
         switch (letter) {
