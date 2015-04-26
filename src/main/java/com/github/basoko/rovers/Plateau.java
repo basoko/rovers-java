@@ -1,5 +1,8 @@
 package com.github.basoko.rovers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The Mars plateau.
  */
@@ -31,6 +34,20 @@ public class Plateau {
     public boolean isValid(Point point) {
         return point.x >= bottomLeft.x && point.x <= upperRight.x
                 && point.y >= bottomLeft.y && point.y <= upperRight.y;
+    }
+
+    /**
+     * Get a list with all {@link Point points} of the plateau.
+     * @return the list of {@link Point points}.
+     */
+    public List<Point> getAllPoints() {
+        ArrayList<Point> points = new ArrayList<>();
+        for(int i = bottomLeft.x; i <= upperRight.x; i++) {
+            for(int j = bottomLeft.y; j <= upperRight.y; j++) {
+                points.add(new Point(i, j));
+            }
+        }
+        return points;
     }
 
     @Override

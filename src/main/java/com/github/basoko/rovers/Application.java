@@ -1,11 +1,10 @@
 package com.github.basoko.rovers;
 
-import com.github.basoko.rovers.command.Command;
+import com.github.basoko.rovers.parallel.ParallelMission;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 /**
  * Application that represents the Nasa Mars rovers mission.
@@ -27,13 +26,9 @@ public class Application {
             checkFile(filePath);
 
             NasaDataParser parser = new NasaDataParser(filePath);
-            List<Rover> rovers = parser.getRovers();
+            ParallelMission mission = new ParallelMission(parser);
 
-            for (Rover rover : rovers) {
-                List<Command> commands = parser.getCommands(rover);
-                rover = executeRoverCommands(rover, commands);
-                System.out.println(rover.showPosition());
-            }
+            mission.start();
         } catch(Exception e) {
             System.err.println(e.getMessage());
         }
@@ -52,12 +47,5 @@ public class Application {
         if(!Files.exists(filePath)) {
             throw new IllegalArgumentException("Can't read file: " + filePath.toString());
         }
-    }
-
-    private static Rover executeRoverCommands(Rover rover, List<Command> commands) {
-        for(Command command : commands) {
-            rover = rover.execute(command);
-        }
-        return rover;
     }
 }
